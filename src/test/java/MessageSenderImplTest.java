@@ -20,7 +20,7 @@ class MessageSenderImplTest {
     private MessageSender messageSender;
     private GeoService geoService;
     private LocalizationService localizationService;
-    private Map<String, String> headers =  new HashMap<>();
+    private Map<String, String> headers = new HashMap<>();
 
     private static final String EXPECTED_TEXT_RUS = "Привет";
     private static final String LOCATION_MOSCOW = "Moscow";
