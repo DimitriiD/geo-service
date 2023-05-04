@@ -1,3 +1,5 @@
+package sender;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +22,6 @@ class MessageSenderImplTest {
     private MessageSender messageSender;
     private GeoService geoService;
     private LocalizationService localizationService;
-    private Map<String, String> headers = new HashMap<>();
 
     private static final String EXPECTED_TEXT_RUS = "Привет";
     private static final String LOCATION_MOSCOW = "Moscow";
@@ -38,6 +39,7 @@ class MessageSenderImplTest {
     @Test
     @DisplayName("Проверка отправки текста на русском языке для российского ip")
     void sendShouldReturnRussianTextForRussianIP() {
+        Map<String, String> headers = new HashMap<>();
         headers.put(MessageSenderImpl.IP_ADDRESS_HEADER, GeoServiceImpl.MOSCOW_IP);
 
         Mockito.when(geoService.byIp(GeoServiceImpl.MOSCOW_IP))
@@ -51,6 +53,7 @@ class MessageSenderImplTest {
     @Test
     @DisplayName("Проверка отправки английского текста для не российского ip")
     void sendShouldReturnEnglishTextForNotRussianIP() {
+        Map<String, String> headers = new HashMap<>();
         headers.put(MessageSenderImpl.IP_ADDRESS_HEADER, GeoServiceImpl.NEW_YORK_IP);
 
         Mockito.when(geoService.byIp(GeoServiceImpl.NEW_YORK_IP))

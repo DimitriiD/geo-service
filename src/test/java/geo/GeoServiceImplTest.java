@@ -1,3 +1,5 @@
+package geo;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,20 +9,12 @@ import ru.netology.geo.GeoServiceImpl;
 
 class GeoServiceImplTest {
 
-    private Country expectedCountry;
-    private Country resultTestCountry;
-
-    @BeforeEach
-    void create() {
-
-        var geoService = new GeoServiceImpl();
-        var expectedLocation = new Location("", Country.RUSSIA, "", 0);
-        expectedCountry = expectedLocation.getCountry();
-        resultTestCountry = geoService.byIp(GeoServiceImpl.MOSCOW_IP).getCountry();
-    }
-
     @Test
     void byIpShouldReturnCorrectLocation() {
+        var geoService = new GeoServiceImpl();
+        var expectedLocation = new Location("", Country.RUSSIA, "", 0);
+        var expectedCountry = expectedLocation.getCountry();
+        var resultTestCountry = geoService.byIp(GeoServiceImpl.MOSCOW_IP).getCountry();
         Assertions.assertEquals(expectedCountry, resultTestCountry);
     }
 }
