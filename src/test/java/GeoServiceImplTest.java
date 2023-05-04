@@ -11,7 +11,7 @@ class GeoServiceImplTest {
     private Country resultTestCountry;
 
     @BeforeEach
-    void createStubsForExternalServices() {
+    void create() {
 
         var geoService = new GeoServiceImpl();
         var expectedLocation = new Location("", Country.RUSSIA, "", 0);
